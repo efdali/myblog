@@ -1,0 +1,98 @@
+<%include ../partials/header%>
+<%include ../partials/sidebar%>
+
+
+  <div class="container">
+<%if(post!==undefined){%>
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-7 mx-auto">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Postu Düzenle</h1>
+              </div>
+              <form action="/admin/edit-post/<%-post.id%>" method="POST" class="user">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Başlık" name="title" value="<%- post.title%>">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control" placeholder="Post AltBaşlık" name="subTitle" value="<%-post.subTitle%>">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" rows="10" name="text"><%-post.text%></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Url" name="url" value="<%-post.url%>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Resim" name="image" value="<%-post.image%>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Tarih" name="meta" value="<%-post.meta%>" readonly> 
+                </div>
+                <button class="btn btn-primary btn-user btn-block">
+                  Güncelle
+                </button>
+              </form>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<%}else{%>
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-7 mx-auto">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Yeni Post</h1>
+              </div>
+              <form action="/admin/add-post/" method="POST" class="user">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Başlık" name="title">
+                </div>
+                <div class="form-group ">
+                    <input type="text" class="form-control" placeholder="Post AltBaşlık" name="subTitle">
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" rows="10" name="text"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Url" name="url">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Resim" name="image">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Post Tarih" name="meta" readonly> 
+                </div>
+                <button class="btn btn-primary btn-user btn-block">
+                  Ekle
+                </button>
+              </form>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<%}%>
+  </div>
+
+
+<%include ../partials/footer%>

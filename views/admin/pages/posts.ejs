@@ -1,0 +1,67 @@
+<%include ../partials/header%>
+<%include ../partials/sidebar%>
+
+<!-- Begin Page Content -->
+        <div class="container-fluid">
+
+          <!-- Page Heading -->
+          <h1 class="h3 mb-2 text-gray-800">Yazılar</h1>
+          <p class="mb-4">En yakın tarihe göre sıralanmış paylaşılan bütün yazılar.</p>
+
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Blog Yazıları</h6>
+              <a class="btn btn-primary float-right text-light" href="/admin/add-post">Yeni Post</a>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Resim</th>
+                      <th>Başlık</th>
+                      <th>Alt Başlık</th>
+                      <th>Url</th>
+                      <th>Tarih</th>
+                      <th>Düzenle</th>
+                      <th>Sil</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>Resim</th>
+                      <th>Başlık</th>
+                      <th>Alt Başlık</th>
+                      <th>Url</th>
+                      <th>Tarih</th>
+                      <th>Düzenle</th>
+                      <th>Sil</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                  <%posts.forEach(post=>{ %>
+                    <tr>
+                      <td width="260px"><img class="img-fluid" src="<%-post.image%>"/></td>
+                      <td><%-post.title%></td>
+                      <td><%-post.subTitle%></td>
+                      <td><%-post.url%></td>
+                      <td><%-post.meta%></td>
+                      <td><a class="btn btn-info" href="/admin/edit-post/<%-post.id%>">Düzenle</a></td>
+                      <td><a class="btn btn-danger" href="/admin/delete-post/<%-post.id%>">Sil</a></td>
+                    </tr>
+                  <%})%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+
+
+
+
+
+<%include ../partials/footer%>

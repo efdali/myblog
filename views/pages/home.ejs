@@ -1,0 +1,59 @@
+<%include ../partials/header %>
+<%include ../partials/navbar %>
+
+<!-- Page Header -->
+  <header class="masthead" style="background-image: url('/public/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Efdal Blog</h1>
+            <span class="subheading">Öğrendiklerimi aktardığım kişisel blog</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <% posts.forEach(post=>{ %>
+        <div class="post-preview">
+          <a href="post/<%-post.url%>">
+            <h2 class="post-title">
+              <%=post.title%>
+            </h2>
+            <h3 class="post-subtitle">
+              <%=post.subTitle%>
+            </h3>
+          </a>
+          <span class="meta">Posted by
+              <a href="/about">Efdal İncesu</a>
+              on <%-_.formatDate(post.meta)%></span>
+        </div>
+
+        <hr>
+        <% }) %>
+
+    
+        <hr>
+        
+        <!-- Pager -->
+        <div class="clearfix">
+          <%if(page>1){%>
+            <a class="btn btn-primary float-left" href="/?page=<%-(Number(page)-1)%>">&larr; Önceki Postlar</a>
+          <%}%>
+          <%if(pages>Number(page)){%>
+            <a class="btn btn-primary float-right" href="/?page=<%-(Number(page)+1)%>">Eski Postlar &rarr;</a>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+<%include ../partials/footer %>
